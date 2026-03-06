@@ -14,3 +14,9 @@ jobs:
         submodules: true
     - name: Build static bpftrace
       run: ./.github/include/static-arm64.sh
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: bpftrace-arm64-static
+        path: build-static/src/bpftrace
