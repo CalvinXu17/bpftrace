@@ -24,7 +24,7 @@ make -C "$BUILD_DIR" -j$(nproc)
 ./"$BUILD_DIR"/src/bpftrace --help
 
 # Validate that it's a mostly static binary except for libc
-EXPECTED="/lib/ld-musl-x86_64.so.1\nlibc.musl-x86_64.so.1"
+EXPECTED="/lib/ld-musl-aarch64.so.1\nlibc.musl-aarch64.so.1"
 GOT=$(ldd "$BUILD_DIR"/src/bpftrace | awk '{print $1}')
 if ! diff <(echo -e "$EXPECTED") <(echo "$GOT"); then
   set +x
